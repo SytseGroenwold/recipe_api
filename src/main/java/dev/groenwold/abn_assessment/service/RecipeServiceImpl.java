@@ -23,8 +23,8 @@ public class RecipeServiceImpl {
         return recipeRepository.save(recipe);
     }
 
-    public List<Recipe> getRecipeByProperties(Integer id, String title, String diet, Integer servings, List<String> ingredients, List<String> instructions, Integer page){
-        return recipeRepository.getRecipesWithCondition(id, title, diet, servings, ingredients, instructions, PageRequest.of(page, 15));
+    public List<Recipe> getRecipesWithCondition(Integer id, String name, String diet, Integer servings, List<String> ingredients, List<String> instructions, Integer page){
+        return recipeRepository.getRecipesWithCondition(id, name, diet, servings, ingredients, instructions, PageRequest.of(page, 15));
     }
 
     public void deleteRecipeById(String id) {

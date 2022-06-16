@@ -9,7 +9,7 @@
 4. mvn spring-boot:run
 
 ## API Docs
-get all: localhost:8081/recipes
-post: localhost:8081/recipe/add (json body)
-delete: localhost:8081/recipe/delete/<id>
+* get all: localhost:8081/recipes
+* post: localhost:8081/recipe/add (json body)
+* delete: localhost:8081/recipe/delete/<id>
 ## Design decisions

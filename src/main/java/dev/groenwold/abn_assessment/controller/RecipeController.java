@@ -25,14 +25,15 @@ public class RecipeController {
 
     @GetMapping("/recipe")
     public ResponseEntity<?> getRecipeByProperties(@RequestParam(required = false) Integer id,
-                                                   @RequestParam(required = false) String title,
+                                                   @RequestParam(required = false) String name,
                                                    @RequestParam(required = false) String diet,
                                                    @RequestParam(required = false) Integer servings,
                                                    @RequestParam(required = false) List<String> ingredients,
                                                    @RequestParam(required = false) List<String> instructions,
                                                    @RequestParam Integer page){
         LOGGER.info("RecipeController: Get recipes based on conditions.");
-        return ResponseEntity.ok().body(recipeService.getRecipeByProperties(id, title, diet, servings, ingredients, instructions, page));
+        LOGGER.info(id + name + diet + servings + ingredients + instructions);
+        return ResponseEntity.ok().body(recipeService.getRecipesWithCondition(id, name, diet, servings, ingredients, instructions, page));
     }
 
 
