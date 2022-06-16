@@ -30,10 +30,10 @@ public class RecipeCustomRepositoryImpl implements RecipeCustomRepository{
             criteria.add(Criteria.where("id").is(id));
         }
         if (name != null){
-            criteria.add(Criteria.where("name").is(name));
+            criteria.add(Criteria.where("name").regex(name, "i"));
         }
         if (diet != null){
-            criteria.add(Criteria.where("diet").is(diet));
+            criteria.add(Criteria.where("diet").regex(diet, "i"));
         }
         if (servings != null){
             criteria.add(Criteria.where("servings").is(servings));
