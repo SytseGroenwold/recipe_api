@@ -30,27 +30,6 @@ public class RecipeController {
         return ResponseEntity.ok().body(recipeServiceImpl.getRecipesWithConditionTwo(searchConditions, page));
     }
 
-    @GetMapping("/recipe")
-    public ResponseEntity<?> getRecipeByProperties(@RequestParam(required = false) Integer id,
-                                                   @RequestParam(required = false) String name,
-                                                   @RequestParam(required = false) String diet,
-                                                   @RequestParam(required = false) Integer servings,
-                                                   @RequestParam(required = false) String ingredients,
-                                                   @RequestParam(required = false) String notIngredients,
-                                                   @RequestParam(required = false) String instructions,
-                                                   @RequestParam Integer page){
-        LOGGER.info("RecipeController: Get recipes based on conditions.");
-        LOGGER.info(id + name + diet + servings + ingredients + instructions);
-        return ResponseEntity.ok().body(recipeServiceImpl.getRecipesWithCondition(id,
-                name,
-                diet,
-                servings,
-                ingredients,
-                notIngredients,
-                instructions,
-                page));
-    }
-
 
     @PostMapping(value = "/recipe/add")
     public ResponseEntity<?> addRecipe(@RequestBody Recipe recipe){

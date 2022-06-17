@@ -25,23 +25,6 @@ public class RecipeServiceImpl {
         return recipeRepository.save(recipe);
     }
 
-    public List<Recipe> getRecipesWithCondition(Integer id,
-                                                String name,
-                                                String diet,
-                                                Integer servings,
-                                                String ingredients,
-                                                String notIngredients,
-                                                String instructions,
-                                                Integer page) {
-        return recipeRepository.getRecipesWithCondition(id,
-                name,
-                diet,
-                servings,
-                ingredients,
-                notIngredients,
-                instructions,
-                PageRequest.of(page, 15));
-    }
 
     public void deleteRecipeById(String id) {
         recipeRepository.deleteById(id);

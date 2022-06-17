@@ -47,66 +47,27 @@ public class RecipeCustomRepositoryImpl implements RecipeCustomRepository{
                     criteria.add(Criteria.where(field).regex(searchConditions.getName(), "i"));
                     break;
                 case "ingredients":
+//                    criteria.add(Criteria.where(field).regex(searchConditions.getIngredients(), "i"));
                     searchConditions.getIngredientsList().forEach((ingredient) ->{
                         criteria.add(Criteria.where(field).regex(ingredient, "i"));
                     });
                     break;
                 case "instructions":
+//                    criteria.add(Criteria.where(field).regex(searchConditions.getInstructions(), "i"));
                     searchConditions.getInstructionsList().forEach((instruction) ->{
                         criteria.add(Criteria.where(field).regex(instruction, "i"));
                     });
                     break;
                 case "notIngredients":
+//                    criteria.add(Criteria.where(field).regex("^(?!.*?"+searchConditions.getNotIngredients()+").*", "i"));
                     searchConditions.getNotIngredientsList().forEach((notIngredient)->{
-                        criteria.add(Criteria.where(field).regex("^(?!.*?"+notIngredient+").*", "i"));
+                        criteria.add(Criteria.where(field).regex("^(?:(?!:"+notIngredient+").)*$", "i"));
                     });
                     break;
             }
         });
         if (!criteria.isEmpty()) {
             criteria.forEach(query::addCriteria);
-        }
-        return mongoTemplate.find(query, Recipe.class);
-    }
-
-    public List<Recipe> getRecipesWithCondition(Integer id,
-                                                String name,
-                                                String diet,
-                                                Integer servings,
-                                                String ingredients,
-                                                String notIngredients,
-                                                String instructions,
-                                                Pageable page){
-        LOGGER.info("RecipeCustomRepositoryImpl reached.");
-        final Query query = new Query().with(page);
-        final List<Criteria> criteria = new ArrayList<>();
-        if (id != null){
-            criteria.add(Criteria.where("id").is(id));
-        }
-        if (name != null){
-            criteria.add(Criteria.where("name").regex(name, "i"));
-        }
-        if (diet != null){
-            criteria.add(Criteria.where("diet").regex(diet, "i"));
-        }
-        if (servings != null){
-            criteria.add(Criteria.where("servings").is(servings));
-        }
-        if (ingredients != null){
-            List<String> ingredientsSplit = Arrays.asList(ingredients);
-            ingredientsSplit.forEach(ingredient -> criteria.add(Criteria.where("ingredients").is(ingredient)));
-        }
-        if (notIngredients != null){
-            List<String> notIngredientSplit = Arrays.asList(notIngredients);
-            notIngredientSplit.forEach(notIngredient -> criteria.add(Criteria.where("ingredients").ne(notIngredient)));
-        }
-        if (instructions != null){
-            List<String> instructionSplit = Arrays.asList(instructions);
-            instructionSplit.forEach(instruction -> criteria.add(Criteria.where("instructions").is(instruction)));
-        }
-        if (!criteria.isEmpty()){
-            criteria.forEach(query::addCriteria);
-//            query.addCriteria(new Criteria().andOperator(criteria.toArray(new Criteria[criteria.size()])));
         }
         return mongoTemplate.find(query, Recipe.class);
     }
