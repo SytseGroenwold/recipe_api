@@ -32,4 +32,8 @@ public class RecipeServiceImpl {
     public Object getRecipesWithConditionTwo(SearchConditions searchConditions, Integer page) {
         return recipeRepository.getRecipesWithConditionTwo(searchConditions, PageRequest.of(page, 15));
     }
+
+    public List<Recipe> updateRecipe(String id, Recipe recipe) {
+        return recipeRepository.findAndUpdate(id, recipe);
+    }
 }

@@ -37,6 +37,12 @@ public class RecipeController {
         return ResponseEntity.ok().body(recipeServiceImpl.saveOrUpdateRecipe(recipe));
     }
 
+    @PutMapping(value = "recipes/edit")
+    public ResponseEntity<?> editRecipe(@RequestParam String id,
+                                        @RequestBody Recipe recipe){
+        return ResponseEntity.ok().body(recipeServiceImpl.updateRecipe(id, recipe));
+    }
+
     @DeleteMapping("/recipe/delete/{id}")
     public void deleteRecipe(@PathVariable String id){
         LOGGER.info("RecipeController: Delete recipe with ID " + id);
