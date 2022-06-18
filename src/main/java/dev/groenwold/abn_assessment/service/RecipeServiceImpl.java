@@ -25,7 +25,6 @@ public class RecipeServiceImpl {
         return recipeRepository.save(recipe);
     }
 
-
     public void deleteRecipeById(String id) {
         recipeRepository.deleteById(id);
     }

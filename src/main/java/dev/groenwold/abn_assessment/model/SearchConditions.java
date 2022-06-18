@@ -36,6 +36,10 @@ public class SearchConditions {
         return nonEmptyFields;
     }
 
+    public List<String> getNameList() {
+        return List.of(name.split(","));
+    }
+
     public List<String> getIngredientsList(){
         return List.of(ingredients.split(","));
     }
