@@ -9,9 +9,7 @@ import java.util.Optional;
 
 @Repository
 public interface RecipeRepository extends MongoRepository<Recipe, String>, RecipeCustomRepository {
-
     Optional<Recipe> findById(String id);
 
     List<Recipe> findAll();
-
 }

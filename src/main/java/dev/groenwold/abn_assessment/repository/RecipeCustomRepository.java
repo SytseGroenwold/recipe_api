@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 public interface RecipeCustomRepository {
-    public List<Recipe> getRecipesWithConditionTwo(SearchConditions searchConditions, Pageable page);
+    public List<Recipe> getRecipesWithCondition(SearchConditions searchConditions,  Integer page);
 
     public List<Recipe> findAndUpdate(String id, Recipe recipe);
 }

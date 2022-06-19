@@ -3,15 +3,12 @@ package dev.groenwold.abn_assessment.service;
 import dev.groenwold.abn_assessment.model.Recipe;
 import dev.groenwold.abn_assessment.model.SearchConditions;
 import dev.groenwold.abn_assessment.repository.RecipeRepository;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
-@Slf4j
 @Service
 public class RecipeServiceImpl {
     @Autowired
@@ -30,7 +27,7 @@ public class RecipeServiceImpl {
     }
 
     public Object getRecipesWithCondition(SearchConditions searchConditions, Integer page) {
-        return recipeRepository.getRecipesWithConditionTwo(searchConditions, PageRequest.of(page, 15));
+        return recipeRepository.getRecipesWithCondition(searchConditions, page);
     }
 
     public List<Recipe> updateRecipe(String id, Recipe recipe) {

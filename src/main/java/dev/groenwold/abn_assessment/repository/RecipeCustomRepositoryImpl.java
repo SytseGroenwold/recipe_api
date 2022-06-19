@@ -5,12 +5,12 @@ import dev.groenwold.abn_assessment.model.SearchConditions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,6 @@ import java.util.StringJoiner;
 
 @Repository
 public class RecipeCustomRepositoryImpl implements RecipeCustomRepository{
-
     private static final Logger LOGGER = LoggerFactory.getLogger(RecipeCustomRepositoryImpl.class);
 
     @Autowired
@@ -33,9 +32,9 @@ public class RecipeCustomRepositoryImpl implements RecipeCustomRepository{
     }
 
     // The function that handles turning the given conditions into a MongoDB query.
-    public List<Recipe> getRecipesWithConditionTwo(SearchConditions searchConditions, Pageable page) {
+    public List<Recipe> getRecipesWithCondition(SearchConditions searchConditions, Integer page) {
         LOGGER.info("New condition search.");
-        final Query query = new Query().with(page);
+        final Query query = new Query().with(PageRequest.of(page, 15));
         final Query excludeQuery = new Query();
         final List<Criteria> criteria = new ArrayList<>();
         final List<Criteria> excludeCriteria = new ArrayList<>();

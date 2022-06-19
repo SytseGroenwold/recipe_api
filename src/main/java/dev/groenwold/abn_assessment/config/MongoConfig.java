@@ -15,8 +15,7 @@ import java.util.Map;
 public class MongoConfig {
     @Bean
     CommandLineRunner commandLineRunner(RecipeRepository recipeRepository){
-        //TODO Remove this deleteAll(), here only for development purposes
-        recipeRepository.deleteAll();
+        // Add an entry at startup for troubleshooting purposes
         return strings -> {
             recipeRepository.save(new Recipe(
                     "0",
