@@ -29,7 +29,7 @@ public class RecipeServiceImpl {
         recipeRepository.deleteById(id);
     }
 
-    public Object getRecipesWithConditionTwo(SearchConditions searchConditions, Integer page) {
+    public Object getRecipesWithCondition(SearchConditions searchConditions, Integer page) {
         return recipeRepository.getRecipesWithConditionTwo(searchConditions, PageRequest.of(page, 15));
     }
 

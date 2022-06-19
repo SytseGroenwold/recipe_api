@@ -24,14 +24,14 @@ public class RecipeController {
         return recipeServiceImpl.findAll();
     }
 
-    @GetMapping("/recipe/search")
-    public ResponseEntity<?> getRecipeByPropertiesTwo(@RequestBody() SearchConditions searchConditions,
-                                                      @RequestParam(required = false) Integer page){
-        return ResponseEntity.ok().body(recipeServiceImpl.getRecipesWithConditionTwo(searchConditions, page));
+    @GetMapping("/recipes/search")
+    public ResponseEntity<?> getRecipeByProperties(@RequestBody() SearchConditions searchConditions,
+                                                   @RequestParam(required = false) Integer page){
+        return ResponseEntity.ok().body(recipeServiceImpl.getRecipesWithCondition(searchConditions, page));
     }
 
 
-    @PostMapping(value = "/recipe/add")
+    @PostMapping(value = "/recipes/add")
     public ResponseEntity<?> addRecipe(@RequestBody Recipe recipe){
         LOGGER.info("RecipeController: Add a recipe");
         return ResponseEntity.ok().body(recipeServiceImpl.saveOrUpdateRecipe(recipe));
@@ -43,8 +43,8 @@ public class RecipeController {
         return ResponseEntity.ok().body(recipeServiceImpl.updateRecipe(id, recipe));
     }
 
-    @DeleteMapping("/recipe/delete/{id}")
-    public void deleteRecipe(@PathVariable String id){
+    @DeleteMapping("/recipes/delete")
+    public void deleteRecipe(@RequestParam String id){
         LOGGER.info("RecipeController: Delete recipe with ID " + id);
         recipeServiceImpl.deleteRecipeById(id);
     }

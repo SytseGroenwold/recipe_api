@@ -1,6 +1,5 @@
 package dev.groenwold.abn_assessment.repository;
 
-import com.mongodb.client.model.changestream.UpdateDescription;
 import dev.groenwold.abn_assessment.model.Recipe;
 import dev.groenwold.abn_assessment.model.SearchConditions;
 import org.slf4j.Logger;
@@ -8,10 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.aggregation.ReplaceRootOperation;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.core.query.UpdateDefinition;
 import org.springframework.stereotype.Repository;
 
 

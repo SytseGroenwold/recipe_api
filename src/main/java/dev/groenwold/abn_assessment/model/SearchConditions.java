@@ -1,6 +1,7 @@
 package dev.groenwold.abn_assessment.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,6 +13,8 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
+// @JsonIgnoreProperties allows the user not need to supply keys with empty values for fields they are not interested in.
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SearchConditions {
     private String id;

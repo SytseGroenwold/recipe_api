@@ -12,8 +12,6 @@ public interface RecipeRepository extends MongoRepository<Recipe, String>, Recip
 
     Optional<Recipe> findById(String id);
 
-    Optional<Recipe> findByName(String name);
-
     List<Recipe> findAll();
 
 }

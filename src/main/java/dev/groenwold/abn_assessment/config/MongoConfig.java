@@ -19,12 +19,12 @@ public class MongoConfig {
         recipeRepository.deleteAll();
         return strings -> {
             recipeRepository.save(new Recipe(
-                    "1",
-                    "Popcorn",
-                    "Vegetarian",
-                    2,
-                    "100g corn, 2tbsp oil",
-                    "Heat a cast iron pan and put the oil and a few corn kernels in. When those pop, take out and put the rest of the corn in and cover. Take off heat when popping stops."));
+                    "0",
+                    "Peanut butter fingers",
+                    "vegan",
+                    1,
+                    "jar of peanut butter, fingers",
+                    "Insert finger in jar and mouth sequentially. Optionally watch your favorite Friends episode."));
         };
     }
 }
